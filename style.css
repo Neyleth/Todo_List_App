@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 /* Wrapper - Envoltura */
 body {
   min-height: 100vh;
@@ -38,6 +42,19 @@ body {
 .wrapper .screen {
   flex: 1;
   min-width: 100%;
+  transition: all 0.3s;
+}
+
+.wrapper.show-category .home-screen {
+  transform: translateX(-100%);
+}
+
+.wrapper.show-category .category-screen {
+  transform: translateX(-100%);
+}
+
+.wrapper.show-category .screen-backdrop {
+  transform: translate(-50%, -60%);
 }
 
 /* screen backdrop - Fondo de pantalla */
@@ -51,6 +68,7 @@ body {
   transform: translateX(-50%);
   border-radius: 0 0 50% 50%;
   background-color: #f9ea85;
+  transition: all 0.3s;
 }
 
 .head-wrapper {
@@ -126,5 +144,55 @@ body {
 }
 
 .categories .category:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px 5px #00000040;
+}
+
+.category .left {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.category .left img {
+  width: 3.7rem;
+}
+
+.category .content h1 {
+  font-size: 1.5rem;
+}
+
+.category .content p {
+  color: #2e2e2e;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.category .options {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.category:hover .options {
+  opacity: 1;
+  visibility: visible;
+}
+.category .toggle-btn {
+  width: 2rem;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* Pantalla de tareas */
+.category-screen .head-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-screen .head-wrapper svg {
+  width: 2rem;
+  cursor: pointer;
+  color: #2e2e2e;
 }

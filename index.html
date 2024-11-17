@@ -7,9 +7,7 @@
     <title>Todo List App</title>
   </head>
   <body>
-    <!-- Wrapper - Envoltura -->
-    <div class="wrapper">
-      <!-- Screen backdrop - Fondo de pantalla -->
+    <div class="wrapper show-category">
       <div class="screen-backdrop"></div>
 
       <!-- Home screen - Pantalla de inicio -->
@@ -52,7 +50,60 @@
         <!-- Categories - Categorías -->
         <div class="categories-wrapper">
           <div class="categories">
-            <div class="category">lorem</div>
+            <div class="category">
+              <div class="left">
+                <img
+                  src="assets/icons/marketing_finance_e_commerce_business_management_icon_263063.png"
+                  alt=""
+                />
+                <div class="content">
+                  <h1>Personal</h1>
+                  <p>2 tareas pendientes</p>
+                </div>
+              </div>
+
+              <div class="options">
+                <div class="toggle-btn">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12
+                    6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0
+                    110-1.5.75.75 0 010 1.5z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Pantalla de tareas -->
+      <div class="screen category-screen">
+        <div class="head-wrapper">
+          <div class="back-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+              />
+            </svg>
           </div>
         </div>
       </div>
