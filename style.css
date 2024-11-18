@@ -196,3 +196,141 @@ body {
   cursor: pointer;
   color: #2e2e2e;
 }
+
+.category-details {
+  padding: 0 30px;
+  margin-top: 7rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.category-details img {
+  width: 4rem;
+}
+
+.category-details .details p {
+  opacity: 0.6;
+}
+
+/* Tasks - Tareas */
+.tasks-wrapper {
+  padding: 0 30px;
+  margin-top: 1rem;
+  height: calc(100% - 12rem);
+  padding-bottom: 20px;
+  overflow: auto;
+}
+
+.tasks {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  width: max-content;
+  cursor: pointer;
+}
+
+.task input {
+  display: none;
+}
+
+.task .checkmark {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 2px;
+  border: 1px solid #2e2e2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task .checkmark svg {
+  width: 1rem;
+  color: #2e2e2e;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.task:hover .checkmark svg {
+  opacity: 1;
+}
+
+.task .checkmark svg path {
+  stroke-width: 3;
+}
+
+.task input:checked ~ .checkmark {
+  background-color: #2e2e2e;
+}
+
+.task input:checked ~ .checkmark svg {
+  opacity: 1;
+  color: #fff;
+}
+
+.task input:checked ~ p {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-wrapper .delete {
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: #2e2e2e;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.031);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.task-wrapper:hover .delete {
+  visibility: visible;
+  opacity: 1;
+}
+
+.task-wrapper .delete:hover {
+  color: red;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Add task btn - boton de agregar tarea */
+.add-task-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9ea85;
+  transition: all 0.3s;
+}
+
+.add-task-btn:hover {
+  transform: scale(1.1);
+}
+
+.add-task-btn svg {
+  width: 2rem;
+  color: #2e2e2e;
+}
