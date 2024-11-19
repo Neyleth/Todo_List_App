@@ -31,7 +31,9 @@
           <div class="welcome">
             <div class="content">
               <h1>Hola Neyleth</h1>
-              <p>Hoy tienes 5 tareas pendientes</p>
+              <p>
+                Hoy tienes <span class="totalTasks">5</span> tareas pendientes
+              </p>
             </div>
             <div class="img">
               <div class="backdrop"></div>
@@ -49,7 +51,7 @@
             <div class="category">
               <div class="left">
                 <img
-                  src="assets/icons/marketing_finance_e_commerce_business_management_icon_263063.png"
+                  src="assets/icons/marketing_event_finance_appointment_management_business_icon_263069.png"
                   alt=""
                 />
                 <div class="content">
@@ -111,13 +113,13 @@
 
         <div class="category-details">
           <img
-            src="assets/icons/marketing_finance_e_commerce_business_management_icon_263063.png"
+            src="assets/icons/marketing_event_finance_appointment_management_business_icon_263069.png"
             alt=""
             id="category-img"
           />
           <div class="details">
-            <p>8 tareas pendientes</p>
-            <h1>Personal</h1>
+            <p class="category-tasks">8 tareas pendientes</p>
+            <h1 class="category-title">Personal</h1>
           </div>
         </div>
 
@@ -183,6 +185,29 @@
             stroke-linejoin="round"
           />
         </svg>
+      </div>
+
+      <!-- Backdrop - fondo de pantalla -->
+      <div class="black-backdrop"></div>
+
+      <!-- Add task form - Formulario para agregar tarea -->
+      <div class="add-task">
+        <div class="add-task-backdrop"></div>
+        <h1 class="heading">Agregar tarea</h1>
+        <div class="input-group">
+          <label for="task-input">Tarea</label>
+          <input type="text" id="task-input" required />
+        </div>
+        <div class="input-group">
+          <label for="category-select">Categorías</label>
+          <select name="" id="category-select">
+            <option value="personal">Personal</option>
+          </select>
+        </div>
+        <div class="btns">
+          <button class="cancel-btn">Cancelar</button>
+          <button class="add-btn">Agregar</button>
+        </div>
       </div>
     </div>
 

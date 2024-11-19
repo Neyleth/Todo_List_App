@@ -222,6 +222,13 @@ body {
   overflow: auto;
 }
 
+.no-task {
+  margin-top: 5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
 .tasks {
   padding-top: 1rem;
   display: flex;
@@ -325,6 +332,11 @@ body {
   background-color: #f9ea85;
   transition: all 0.3s;
 }
+.add-task-btn.active {
+  z-index: 1;
+  bottom: 20rem;
+  transform: rotate(45deg);
+}
 
 .add-task-btn:hover {
   transform: scale(1.1);
@@ -333,4 +345,105 @@ body {
 .add-task-btn svg {
   width: 2rem;
   color: #2e2e2e;
+}
+
+/* Formulario para agregar tarea */
+.add-task {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  padding: 20px 30px;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.add-task.active {
+  bottom: 0;
+}
+
+.add-task .heading {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group label {
+  display: block;
+  width: 100%;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.input-group label {
+  width: max-content;
+  padding: 0 5px;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.btns button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btns button.add-btn {
+  background-color: #f9ea85;
+  color: #2e2e2e;
+}
+
+.add-task-backdrop {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 135%;
+  height: 20rem;
+  border-radius: 50% 50% 0 0;
+  background-color: #fff;
+}
+
+.black-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+  z-index: 10;
+}
+
+.black-backdrop.active {
+  opacity: 1;
+  visibility: visible;
 }
