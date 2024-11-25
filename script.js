@@ -307,6 +307,7 @@ const renderCategories = () => {
                   </svg>
                 </div>
               </div>`;
+
     categoriesContainer.appendChild(div);
   });
 };
@@ -323,9 +324,9 @@ const renderTasks = () => {
   //if Si no hay ninguna tarea para la categoría seleccionada
   if (categoryTasks.length === 0) {
     tasksContainer.innerHTML = `<p class="no-task">No hay tareas para esta categoría</p>`;
-  }
-  // Si hay tareas para la categoría seleccionada
-  else
+
+    // Si hay tareas para la categoría seleccionada
+  } else {
     categoryTasks.forEach((task) => {
       const div = document.createElement("div");
       div.classList.add("task-wrapper");
@@ -336,6 +337,16 @@ const renderTasks = () => {
       checkbox.type = "checkbox";
       checkbox.id = task.id;
       checkbox.checked = task.completed;
+
+      // Agregar funcionalidad de finalización al hacer clic en la casilla de verificación
+      checkbox.addEventListener("change", () => {
+        const index = tasks.findIndex((t) => t.id === task.id);
+        // Cambia el verdadero por falso o viceversa
+        tasks[index].completed = !tasks[index].completed;
+        // Guardar en el local
+        saveLocal();
+      });
+
       div.innerHTML = `
                 <div class="delete">
                 <svg
@@ -379,9 +390,77 @@ const renderTasks = () => {
       label.prepend(checkbox);
       div.prepend(label);
       tasksContainer.appendChild(div);
+
+      // Eliminar funcionalidad
+      const deleteBtn = div.querySelector(".delete");
+      deleteBtn.addEventListener("click", () => {
+        const index = tasks.findIndex((t) => t.id === task.id);
+
+        // Eliminar la tarea en la que se ha hecho clic
+        tasks.splice(index, 1);
+        saveLocal();
+        renderTasks();
+      });
     });
+
+    renderCategories();
+    calculateTotal();
+  }
 };
 
+// Guarde y obtenga tareas de Storag local
+const saveLocal = () => {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+};
+const getLocal = () => {
+  const localTasks = JSON.parse(localStorage.getItem("tasks"));
+
+  // If tareas encontradas
+  if (localTasks) {
+    tasks = localTasks;
+  }
+};
+
+// Agreguemos funcionalidad para agregar nuevas tareas
+
+// Renderizar todas las categorías en select
+const categorySelect = document.querySelector("#category-select");
+const cancelBtn = document.querySelector(".cancel-btn");
+const addBtn = document.querySelector(".add-btn");
+
+const taskInput = document.querySelector("#task-input");
+
+cancelBtn.addEventListener("click", toggleAddTaskForm);
+
+addBtn.addEventListener("click", () => {
+  const task = taskInput.value;
+  const category = categorySelect.value;
+
+  if (task === "") {
+    alert("Por favor, ingrese una tarea");
+  } else {
+    const newTask = {
+      id: tasks.length + 1,
+      task,
+      category,
+      completed: false,
+    };
+    tasks.push(newTask);
+    taskInput.value = "";
+    saveLocal();
+    toggleAddTaskForm();
+    renderTasks();
+  }
+});
+
+categories.forEach((category) => {
+  const option = document.createElement("option");
+  option.value = category.title.toLowerCase();
+  option.textContent = category.title;
+  categorySelect.appendChild(option);
+});
+
+// Todas estas son tareas almacenadas
+getLocal();
 calculateTotal();
-renderCategories();
 renderTasks();
